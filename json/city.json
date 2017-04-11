@@ -1,0 +1,43 @@
+{
+  "city": [
+    {
+      "stCode": "MH",
+      "cityList": [
+        {
+          "ctCode": "PU",
+          "ctDesc": "Pune"
+        },
+        {
+          "ctCode": "AU",
+          "ctDesc": "Aurangabad"
+        }
+      ]
+    },
+    {
+      "stCode": "PU",
+      "cityList": [
+        {
+          "ctCode": "AM",
+          "ctDesc": "Amritsar"
+        },
+        {
+          "ctCode": "JA",
+          "ctDesc": "Jalandhar"
+        }
+      ]
+    },
+    {
+      "stCode": "RJ",
+      "cityList": [
+        {
+          "ctCode": "UD",
+          "ctDesc": "Udaipur"
+        },
+        {
+          "ctCode": "JA",
+          "ctDesc": "Jaipur"
+        }
+      ]
+    }
+  ]
+}

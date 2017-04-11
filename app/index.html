@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html ng-app="branchLocator">
+    <head>
+        <title>Filter App</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <script src="../vendor/js/angular.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAuBsRFftyC2BosJ0yCze8lBUb5FW1dKXg"></script>
+        <script src="controller/branchLocContoller.js"></script>
+        <style>
+            #map {
+                height:520px;
+                width:1024px;
+            }
+            .infoWindowContent {
+                font-size:  14px !important;
+                border-top: 1px solid #ccc;
+                padding-top: 10px;
+            }
+            h2 {
+                margin-bottom:0;
+                margin-top: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="panel panel-default" ng-controller="branchCtrl as vm">
+            <div class="panel-heading"><h3>Branch Locator</h3></div>
+            <div class="panel-body">
+                <div class="col-sm-12">
+                    <div class="col-sm-4">
+                        <label>State</label>
+                        <input type="text" list="stateDesc" class="form-control" ng-change="vm.getSTCode()" ng-model="vm.stDesc" autocomplete="on" required/>
+                        <datalist id="stateDesc">
+                            <option ng-repeat="state in vm.states" value="{{state.Name}}">
+                        </datalist>
+                    </div>
+                    <div class="col-sm-4">
+                        <label>City</label>
+                        <input type="text" list="cityDesc" ng-change="vm.getCTCode()"  class="form-control" ng-model="vm.ctDesc" autocomplete="on"/>
+                        <datalist id="cityDesc" >
+                            <div ng-repeat="city in vm.cities| filter:{stCode:vm.search.stCode}">
+                                <option ng-repeat="ct in city.cityList" value="{{ct.ctDesc}}">
+                            </div>
+                        </datalist>
+                    </div>
+                    <div class="col-sm-4">
+                        <label>Area/Zip</label>
+                        <input type="text" list="zipCode" class="form-control" ng-model="vm.zip" autocomplete="on"/>
+                        <datalist id="zipCode">
+                            <option ng-repeat="zip in vm.Branch.branchList" value="{{zip.zip}}">
+                        </datalist>
+                    </div>
+                </div>
+                <div class="col-sm-12" style="margin:10px 15px">
+                    <button type="submit" ng-click="vm.applyFilters()" class="btn btn-success">Search</button>
+                </div>
+                <div class="col-sm-12" style="margin:10px 15px">
+                  <div class="panel with-nav-tabs panel-default" >
+                        <div class="panel-heading">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#tab1default" data-toggle="tab" ng-click="vm.clickVal=true">List</a></li>
+                                <li><a href="#tab2default" data-toggle="tab"  ng-click="vm.clickVal=false">MAP</a></li>
+                            </ul>
+                        </div>
+                        <div class="panel-body">
+                            <div class="tab-content" ng-if="vm.clickVal==true">
+                                <div class="tab-pane fade in active">
+                                    <table class="table table-striped table-responsive table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Sr. No.</th>
+                                                <th>Branch Name</th>
+                                                <th>Address</th>
+                                                <th>City</th>
+                                                <th>State</th>
+                                                <th>Zip</th>
+                                                <th>Working Hours</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            <tr ng-repeat="branch in vm.filteredBranches">
+                                                <td>{{$index+1}}</td>
+                                                <td>{{branch.branchList[0].brName}}</td>
+                                                <td>{{branch.branchList[0].brAdd}}</td>
+                                                <!--<td>{{branch.ctCode}}</td>-->
+                                                <td ng-repeat="city in vm.cities | filter: {stCode: branch.stCode}">
+                                                    <span  ng-repeat="ct in city.cityList| filter: branch.ctCode">
+                                                        {{ ct.ctDesc }}
+                                                    </span>
+                                                </td>
+                                               
+                                                <!--<td>{{ vm.getCity(branch.ctCode) }}</td>-->
+                                                <td>{{branch.stCode}}</td>
+                                                <td>{{branch.branchList[0].zip}}</td>
+                                                <td>{{branch.branchList[0].workingHours}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="tab-pane fade" id="tab2default">Default 2</div>
+                            </div>
+                            <div id="mapContainer"  ng-if="vm.clickVal==false">
+                                <h1>Display MAP</h1>
+                                <div ng-controller="MapCtrl">
+                                <div id="map"></div>
+                                <!--<div id="class" ng-repeat="marker in markers | orderBy : 'title'">
+                                     <a href="#" ng-click="openInfoWindow($event, marker)">{{marker.title}}</a>
+                                </div>-->
+                                <a href="#" ng-click="openInfoWindow($event, vm.marker)">{{marker.title}}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

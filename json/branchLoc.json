@@ -1,0 +1,15 @@
+{
+	"Branch": [{
+		"title": "Stockholm",
+		"lat": 59.3,
+		"lng": 18.1
+	}, {
+		"title": "Oslo",
+		"lat": 59.9,
+		"lng": 10.8	}, 
+	{
+		"title": "Copenhagen",
+		"lat": 55.7,
+		"lng": 12.6
+	}]
+}

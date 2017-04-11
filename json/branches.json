@@ -1,0 +1,76 @@
+{
+  "Branch": [
+    {
+      "stCode": "MH",
+      "ctCode": "PU",
+      "branchList": [
+        {
+          "brName": "Kharadi",
+          "brAdd": "Kharadi",
+          "zip": "411014",
+          "workingHours": "10Am - 7PM"
+        }
+      ]
+    },
+    {
+      "stCode": "MH",
+      "ctCode": "AU",
+      "branchList": [
+        {
+          "brName": "CIDCO",
+          "brAdd": "CIDCO",
+          "zip": "411013",
+          "workingHours": "10Am - 7PM"
+        }
+      ]
+    },
+    {
+      "stCode": "PU",
+      "ctCode": "AM",
+      "branchList": [
+        {
+          "brName": "Cannought Place",
+          "brAdd": "Cannought Place",
+          "zip": "418953",
+          "workingHours": "9:30Am - 5:30PM"
+        }
+      ]
+    },
+    {
+      "stCode": "PU",
+      "ctCode": "JA",
+      "branchList": [
+        {
+          "brName": "Railway",
+          "brAdd": "Railway Bridge",
+          "zip": "411013",
+          "workingHours": "9:30Am - 5:30PM"
+        }
+      ]
+    },
+    {
+      "stCode": "RJ",
+      "ctCode": "UD",
+      "branchList": [
+        {
+          "brName": "Fateh Sagar",
+          "brAdd": "Fateh Sagar opp marvel palace",
+          "zip": "411256",
+          "workingHours": "10:30Am - 3:30PM"
+        }
+      ]
+    },
+    {
+      "stCode": "RJ",
+      "ctCode": "JA",
+      "branchList": [
+        {
+          "brName": "Jaipur fort",
+          "brAdd": "Jaipur fort",
+          "zip": "417896",
+          "workingHours": "9:30Am - 5:30PM"
+        }
+      ]
+    }
+  ]
+}

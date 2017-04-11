@@ -1,0 +1,16 @@
+{
+  "state": [
+    {
+      "stCode": "MH",
+      "stDesc": "Maharashtra"
+    },
+    {
+      "stCode": "PU",
+      "stDesc": "Punjab"
+    },
+    {
+      "stCode": "RJ",
+      "stDesc": "Rajashatan"
+    }
+  ]
+}
